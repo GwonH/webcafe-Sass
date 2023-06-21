@@ -50,8 +50,8 @@
 }
 
 @mixin padding($spacing) {
-  @include paddingX();
-  @include paddingY();
+  @include paddingX($spacing);
+  @include paddingY($spacing);
 }
 @mixin paddingX($spacing) {
   padding-left: rem($spacing);
@@ -63,8 +63,8 @@
 }
 
 @mixin margin($spacing) {
-  @include marginX();
-  @include marginY();
+  @include marginX($spacing);
+  @include marginY($spacing);
 }
 @mixin marginX($spacing) {
   margin-left: rem($spacing);
@@ -78,4 +78,27 @@
 @mixin autoMargin{
   margin-left: auto;
   margin-right: auto;
+}
+
+// ratio 믹스인
+@mixin ratio($w: 16, $h: 9) {
+  aspect-ratio: $w / $h;
+}
+
+// 반응형 콘텐츠
+@mixin respons($width: max-width, $height: auto) {
+  #{$width}: 100%;
+  height: $height;
+}
+
+// 말줄임표
+@mixin textOver {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin filter($posX: 50%, $posY: 50%, $fit: cover) {
+  object-fit: $fit;
+  object-position: $posX $posY;
 }
